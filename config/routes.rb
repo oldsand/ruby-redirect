@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-
-  get 'links/about'
-
-  get 'os' => 'links#redirect'
+  root 'links#index'
 
   resources :links
 
-  root 'links#index'
+  get 'links/about'
+
+  get ':url' => 'links#redirect'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

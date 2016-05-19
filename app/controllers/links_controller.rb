@@ -16,9 +16,21 @@ class LinksController < ApplicationController
   end
 
   def redirect
-    short_url = 'os'
+    #raise params[:url] #for debug use
+    #raise params.to_yaml show content
+    #raise params.inspect
+    #raise params.to_json
+
+    short_url = params[:url]
     @link = Link.where(short_url: short_url).first
-    redirect_to @link.original_url
+
+    if @link.nil?
+      raise "Route not found."
+      #if redirec to error page
+      #remember to return
+    end
+    redirect_to @link.original_url, status: 301 #the same as below, which is support after ruby 2.0
+    #redirect_to @link.original_url, :status =>301
     #redirect_to original_url
     #redirect_to 'http://www.google.com'
   end
