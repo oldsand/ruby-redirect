@@ -29,6 +29,9 @@ class LinksController < ApplicationController
       #if redirec to error page
       #remember to return
     end
+
+    @link.increase_count!
+
     redirect_to @link.original_url, status: 301 #the same as below, which is support after ruby 2.0
     #redirect_to @link.original_url, :status =>301
     #redirect_to original_url
