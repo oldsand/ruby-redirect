@@ -16,10 +16,11 @@ class LinksController < ApplicationController
   end
 
   def redirect
-    #short_url = ''
-    #original_url = Link
+    short_url = 'os'
+    @link = Link.where(short_url: short_url).first
+    redirect_to @link.original_url
     #redirect_to original_url
-    redirect_to 'http://www.google.com'
+    #redirect_to 'http://www.google.com'
   end
 
   # GET /links/new
