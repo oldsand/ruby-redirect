@@ -6,11 +6,14 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @links = current_user.links.all
+
+    #for example of Class method
+    #@links = Link.favorited
   end
 
   # GET /links/1
-  # GET /links/1.json
+  # GET /links/1.jsonfirst_or_create
   def show
   end
 
@@ -42,7 +45,7 @@ class LinksController < ApplicationController
 
   # GET /links/new
   def new
-    @link = Link.new
+    @link = current_user.links.new
   end
 
   # GET /links/1/edit
@@ -52,7 +55,12 @@ class LinksController < ApplicationController
   # POST /links
   # POST /links.json
   def create
-    @link = Link.new(link_params)
+    @link = current_user.links.new(link_params)
+
+    #@link = current_user.links.where(:original_url[link_params :original_url]).first_or_create()
+
+    #do in model
+    #@link = current_user.links.find_or_create_original_url
 
     respond_to do |format|
       if @link.save
@@ -92,7 +100,7 @@ class LinksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
-      @link = Link.find(params[:id])
+      @link = current_user.links.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
