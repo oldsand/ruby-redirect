@@ -1,4 +1,6 @@
 class Link < ActiveRecord::Base
+  #belongs_to :user
+
   before_save :generate_short_url_if_empty
 
   #Link.where(:original_url => original_url).first_or_create()

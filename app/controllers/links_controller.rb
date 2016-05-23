@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_action :authentication_user!, except: :redirect
+  before_action :authenticate_user!, except: :redirect
 
   before_action :set_link, only: [:show, :edit, :update, :destroy]
 
