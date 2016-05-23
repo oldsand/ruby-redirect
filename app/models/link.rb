@@ -1,5 +1,7 @@
 class Link < ActiveRecord::Base
   #belongs_to :user
+  acts_as_taggable
+
   validates :short_url, uniqueness: true
 
   before_save :generate_short_url_if_empty
