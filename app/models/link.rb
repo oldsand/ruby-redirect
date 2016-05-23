@@ -1,6 +1,8 @@
 class Link < ActiveRecord::Base
   before_save :generate_short_url_if_empty
 
+  #Link.where(:original_url => original_url).first_or_create()
+
   def increase_count
     self.count += 1
   end
