@@ -46,6 +46,7 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = current_user.links.new
+    @link.short_url = "abc" #Set default in new form
   end
 
   # GET /links/1/edit
@@ -105,6 +106,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:original_url, :short_url)
+      params.require(:link).permit(:original_url, :short_url, :tag_list)
     end
 end
