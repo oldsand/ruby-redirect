@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'links/about'
 
+  get 'tags/:tag' => 'links#index'
+
   get ':url' => 'links#redirect'
 
   # The priority is based upon order of creation: first created -> highest priority.

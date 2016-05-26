@@ -6,8 +6,12 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = current_user.links.all
-
+    #@links = current_user.links.all
+    if params[:tag].nil?
+      @links = current_user.links
+    else
+      @links = current_user.links.tagged_with params[:tag]
+    end
     #for example of Class method
     #@links = Link.favorited
   end
