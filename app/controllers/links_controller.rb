@@ -12,6 +12,13 @@ class LinksController < ApplicationController
     else
       @links = current_user.links.tagged_with params[:tag]
     end
+
+    #the same as above
+    #tag = params[:tag]
+    #@links = current_user.links
+
+    #@links = @links.tagged_with(tag) unless tag.nil?
+
     #for example of Class method
     #@links = Link.favorited
   end
